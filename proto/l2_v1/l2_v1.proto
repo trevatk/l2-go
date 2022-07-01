@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package l2_v1;
+option go_package = "github.com/trevatk/l2-go/proto/l2_v1";
+
+message Mock {
+    string application_key = 1;
+    string organization_key = 2;
+    string wallet_address = 3;
+    string user_id = 4;
+    double stake = 5;
+    int64 difficulty = 6;
+    bytes contents = 7;
+}
+
+message Block {
+    string hash = 1;
+}
+
+service L2V1 {
+    rpc MakeBlock (Mock) returns (Block) {}
+}
