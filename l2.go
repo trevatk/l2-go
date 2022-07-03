@@ -8,11 +8,12 @@ import (
 	"github.com/trevatk/l2-go/credential"
 	pb "github.com/trevatk/l2-go/proto/l2_v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 const (
-	_hostname = ""
-	_port     = ""
+	_hostname = "127.0.0.1"
+	_port     = "50051"
 )
 
 // L2
@@ -27,7 +28,9 @@ func NewL2(creds credential.ICredentials) *L2 {
 
 func (l2 *L2) getClient(ctx context.Context) (*grpc.ClientConn, pb.L2V1Client, error) {
 
-	opt := []grpc.DialOption{}
+	opt := []grpc.DialOption{
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	}
 	conn, err := grpc.Dial(net.JoinHostPort(_hostname, _port), opt...)
 	if err != nil {
 		return nil, nil, fmt.Errorf("grpc.Dial: %v", err)

@@ -30,6 +30,8 @@ func (l2 *L2) MakeBlock(ctx context.Context, input *model.Mock) (*model.Block, e
 		Contents:        input.Data,
 	}
 
+	fmt.Println("msg: ", msg)
+
 	opt := []grpc.CallOption{}
 	b, err := client.MakeBlock(timeout, msg, opt...)
 	if err != nil {
