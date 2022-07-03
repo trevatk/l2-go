@@ -1,22 +1,23 @@
-# l2-go
+package example
 
-Layer 2 API
+import (
+	"context"
+	"fmt"
+	"log"
+	"testing"
 
-## Installation
+	"github.com/trevatk/l2-go"
+	"github.com/trevatk/l2-go/credential"
+	"github.com/trevatk/l2-go/model"
+)
 
-run command from project root
-```bash
-go get github.com/trevatk/l2-go
-```
+// TestMakeBlock
+func TestMakeBlock(t *testing.T) {
 
-## Usage
-
-below is a snippet for creating a new block on the blockchain
-```golang
 	ctx := context.TODO()
 
-	key := os.Getenv("APPLICATION_KEY")
-	secret := os.Getenv("ORGANIZATION_SECRET")
+	key := "8d1414ec-fa88-11ec-afff-637eb61dd5bc"
+	secret := "8d1415fa-fa88-11ec-b000-af4e0525c5e6"
 
 	creds := credential.NewFromConfig(&credential.Config{
 		Key:    key,
@@ -38,4 +39,4 @@ below is a snippet for creating a new block on the blockchain
 	}
 
 	fmt.Println("block hash: ", block.Hash)
-```
+}
