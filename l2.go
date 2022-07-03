@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	_hostname = "127.0.0.1"
+	_hostname = "reddress.io"
 	_port     = "50051"
 )
 
